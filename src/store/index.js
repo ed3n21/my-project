@@ -12,35 +12,42 @@ export default new Vuex.Store({
         tournaments: [],
         participants: [],
         currentTournament: null,
-        currentParticipant: null
-    },
+        currentParticipant: null,
+        rootApiUrl: process.env.ROOT_API,
+        tournamentsApiUrl: process.env.TOURNAMENTS_API,
+        participantsApiUrl: process.env.PARTICIPANTS_API
+    }, 
 
     getters: { // = computed
         
     },
-
+    
     actions: { // = methods
         fetchTournaments(context) {
             axios
-                .get('http://localhost:62542/api/tournaments')
-                .then(response => context.commit('setTournaments', response.data));
+                .get(context.state.tournamentsApiUrl)
+                .then(response => {
+                    context.commit('setTournaments', response.data)
+                });
         },
 
         fetchTournamentById(context, id) {
             axios
-                .get('http://localhost:62542/api/tournaments/'+ id)
-                .then(response => context.commit('setCurrentTournament', response.data));
+                .get(context.state.tournamentsApiUrl + '/' + id)
+                .then(response => {
+                    context.commit('setCurrentTournament', response.data)
+                });
         },
 
         fetchParticipants(context) {
             axios
-                .get('http://localhost:62542/api/participants')
+                .get(context.state.participantsApiUrl)
                 .then(response => context.commit('setParticipants', response.data));
         },
 
         fetchParticipantById(context, id) {
             axios
-                .get('http://localhost:62542/api/participants/'+ id)
+                .get(context.state.participantsApiUrl + '/' + id)
                 .then(response => context.commit('setCurrentParticipant', response.data));
         }
     },

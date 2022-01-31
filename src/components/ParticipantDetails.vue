@@ -1,12 +1,12 @@
 <template>
-  <span>
+  <span v-if="participant">
     <div class="container col-md-7 my-5">
       <div class="row text-center">
         <div class="col">
           <img
             width="300px"
             height="auto"
-            :src="'http://localhost:62542/' + participant.imageUrl"
+            :src="$store.state.rootApiUrl + participant.imageUrl"
           />
         </div>
         <div class="col">
@@ -36,7 +36,7 @@
             <th scope="row">{{ tournament.id }}</th>
             <td>
               <router-link
-                class="link-dark text-decoration-none"
+                class="link-dark"
                 :to="{
                   name: 'TournamentDetails',
                   params: { id: tournament.id },
@@ -45,7 +45,7 @@
                     {{ tournament.title }}
               </router-link>
             </td>
-            <td>{{tournament.date.slice(0,10)}}</td>
+            <td>{{new Date(tournament.date).toLocaleDateString()}}</td>
             <td>{{tournament.prize}}</td>
             <td 
             v-if="tournament.winner && tournament.winner.id == id"><font-awesome-icon :icon="['fas', 'trophy']" />

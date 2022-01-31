@@ -3,6 +3,12 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+function dynmaicPropsFn(route) {
+    return {
+      id: Number(route.params.id),
+    };
+}
+
 export default new Router({
   mode: 'history',
   routes: [
@@ -16,7 +22,7 @@ export default new Router({
       path: '/tournaments/:id',
       name: 'TournamentDetails',
       component: () => import(/* webpackChunkName: "tournamentDetails" */ '../components/TournamentDetails'),
-      props: true
+      props: dynmaicPropsFn
     },
     {
       path: '/participants',
@@ -28,7 +34,7 @@ export default new Router({
       path: '/participants/:id',
       name: 'ParticipantDetails',
       component: () => import(/* webpackChunkName: "participantDetails" */ '../components/ParticipantDetails'),
-      props: true
+      props: dynmaicPropsFn
     }
   ]
 })

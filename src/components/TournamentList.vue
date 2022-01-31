@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-3">
+  <div class="container mt-3" v-if="tournaments">
     <div class="row">
       <div
         class="col m-2"
@@ -16,7 +16,7 @@
             :to="{ name: 'TournamentDetails', params: { id: tournament.id } }"
           >
             <img width="400px" height="250px"
-              :src="'http://localhost:62542/' + tournament.imageUrl"
+              :src="$store.state.rootApiUrl + tournament.imageUrl"
               :alt="tournament.title"
             />
           </router-link>

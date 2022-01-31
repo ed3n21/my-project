@@ -1,32 +1,37 @@
 <template>
-  <span>
+  <span v-if="tournament">
     <header>
-      <img class="image img-fluid"  :src="'http://localhost:62542/' + tournament.imageHeaderUrl">
+      <img
+        class="image img-fluid"
+        :src="$store.state.rootApiUrl + tournament.imageHeaderUrl"
+      />
     </header>
     <div class="intro my-5 text-center">
       <div class="container my-5">
-        <h3>{{tournament.title}}</h3>
+        <h3>{{ tournament.title }}</h3>
       </div>
       <div class="container">
         <div class="row">
           <div class="col">
             <h5>Date</h5>
-            <p class="details">{{tournament.date.slice(0, 10)}}</p>
+            <p class="details">{{ new Date(tournament.date).toLocaleDateString() }}</p>
           </div>
           <div class="col">
             <h5>Prize</h5>
-            <p class="details">${{tournament.prize}}</p>
+            <p class="details">${{ tournament.prize }}</p>
           </div>
           <div class="col">
             <h5>Winner</h5>
-            <p v-if="tournament.winner" class="details">{{tournament.winner.firstName}} {{tournament.winner.lastName}}</p>
+            <p v-if="tournament.winner" class="details">
+              {{ tournament.winner.firstName }} {{ tournament.winner.lastName }}
+            </p>
             <p v-else class="details">To be determined</p>
           </div>
         </div>
       </div>
     </div>
     <div class="container col-md-7 mb-5">
-      <p>{{tournament.description}}</p>
+      <p>{{ tournament.description }}</p>
     </div>
     <div class="container container col-md-7">
       <table class="table table-borderless">
@@ -37,12 +42,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="participant in tournament.participants" v-bind:key="participant.id">
-            <th scope="row">{{participant.id}}</th>
+          <tr
+            v-for="participant in tournament.participants"
+            v-bind:key="participant.id"
+          >
+            <th scope="row">{{ participant.id }}</th>
             <td>
-              <a class="text-dark" href="/members/@part.Id">
-              {{participant.firstName}} {{participant.lastName}}</a
+              <router-link
+                class="link-dark"
+                :to="{
+                  name: 'ParticipantDetails',
+                  params: { id: participant.id },
+                }"
               >
+                {{ participant.firstName }} {{ participant.lastName }}
+              </router-link>
             </td>
           </tr>
         </tbody>
@@ -75,6 +89,6 @@ export default {
 
 <style scoped>
 .details {
-	color: #fc5356;
+  color: #fc5356;
 }
 </style>
