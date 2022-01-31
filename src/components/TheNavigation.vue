@@ -1,10 +1,3 @@
-<!--<template>
-  <div class="nav">
-    <router-link to="/">Home</router-link>
-    <router-link to="/tournaments">Tournaments</router-link>
-  </div>
-</template> -->
-
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">

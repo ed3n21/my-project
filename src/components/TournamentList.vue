@@ -16,7 +16,7 @@
             :to="{ name: 'TournamentDetails', params: { id: tournament.id } }"
           >
             <img width="400px" height="250px"
-              :src="'http://localhost:62542/' + tournament.imgUrl"
+              :src="'http://localhost:62542/' + tournament.imageUrl"
               :alt="tournament.title"
             />
           </router-link>
@@ -25,19 +25,6 @@
     </div>
   </div>
 </template>
-<div class="container mt-3">
-    <div class="row">
-        @foreach(var item in Model.Children<Tournament>()) 
-        {
-        <div class="col m-2">
-            <a class="link-dark text-decoration-none" href="@item.Url">
-                <img width="400px" height="250px" src="@item.Image.Url" alt="@item.Title">
-                <p>@item.Title</p>
-            </a>
-        </div>
-        }
-    </div>
-</div>
 
 <script>
 export default {

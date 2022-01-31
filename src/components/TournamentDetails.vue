@@ -1,7 +1,7 @@
 <template>
   <span>
     <header>
-      <img class="image img-fluid"  :src="'http://localhost:62542/' + tournament.imgUrl">
+      <img class="image img-fluid"  :src="'http://localhost:62542/' + tournament.imageHeaderUrl">
     </header>
     <div class="intro my-5 text-center">
       <div class="container my-5">
@@ -19,7 +19,7 @@
           </div>
           <div class="col">
             <h5>Winner</h5>
-            <p v-if="tournament.Winner != null" class="details">{{tournament.winner.firstName}} {{tournament.winner.lastName}}</p>
+            <p v-if="tournament.winner" class="details">{{tournament.winner.firstName}} {{tournament.winner.lastName}}</p>
             <p v-else class="details">To be determined</p>
           </div>
         </div>
@@ -48,12 +48,6 @@
         </tbody>
       </table>
     </div>
-    <!-- <div class="secondaryImages container my-5">
-      @{ if(Model.SecondaryImages != null) { foreach(var image in
-      Model.SecondaryImages) {
-      <div><img class="mx-auto" src="@image.GetCropUrl("square")"></div>
-      } } }
-    </div> -->
   </span>
 </template>
 
@@ -78,3 +72,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.details {
+	color: #fc5356;
+}
+</style>
