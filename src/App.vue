@@ -7,15 +7,11 @@
 
 <script>
 import TheNavigation from './components/TheNavigation.vue'
-import ParticipantList from './components/ParticipantList.vue'
-import ParticipantDetails from './components/ParticipantDetails.vue'
 
 export default {
   name: 'App',
   components: {
-    TheNavigation,
-    ParticipantList,
-    ParticipantDetails
+    TheNavigation
   }
 }
 </script>

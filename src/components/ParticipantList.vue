@@ -34,23 +34,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-            fields: [
-                {
-                    key: 'firstName',
-                },
-                {
-                    key: 'lastName',
-                },
-                {
-                    key: 'totalPrize',
-                    label: 'Money won',
-                },
-            ]
-        }
-    },
-
     computed: {    
         participants() {
         return this.$store.state.participants;
