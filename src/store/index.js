@@ -2,6 +2,8 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import tournamentService from '@/api/services/tournamentService'
+import participantService from '@/api/services/participantService'
 
 
 Vue.use(Vuex)
@@ -13,9 +15,10 @@ export default new Vuex.Store({
         participants: [],
         currentTournament: null,
         currentParticipant: null,
-        rootApiUrl: process.env.ROOT_API,
         tournamentsApiUrl: process.env.TOURNAMENTS_API,
-        participantsApiUrl: process.env.PARTICIPANTS_API
+        participantsApiUrl: process.env.PARTICIPANTS_API,
+        rootApiUrl: process.env.ROOT_API
+
     }, 
 
     getters: { // = computed
@@ -23,32 +26,24 @@ export default new Vuex.Store({
     },
     
     actions: { // = methods
-        fetchTournaments(context) {
-            axios
-                .get(context.state.tournamentsApiUrl)
-                .then(response => {
-                    context.commit('setTournaments', response.data)
-                });
+        async fetchTournaments({commit}) {
+            const tournaments = await tournamentService.getTournamentsAsync();
+            commit('setTournaments', tournaments)
         },
 
-        fetchTournamentById(context, id) {
-            axios
-                .get(context.state.tournamentsApiUrl + '/' + id)
-                .then(response => {
-                    context.commit('setCurrentTournament', response.data)
-                });
+        async fetchTournamentById({commit}, id) {
+            const tournament = await tournamentService.getTournamentAsync(id);
+            commit('setCurrentTournament', tournament)
         },
 
-        fetchParticipants(context) {
-            axios
-                .get(context.state.participantsApiUrl)
-                .then(response => context.commit('setParticipants', response.data));
+        async fetchParticipants({commit}) {
+            const participants = await participantService.getParticipantsAsync()
+            commit('setParticipants', participants)
         },
 
-        fetchParticipantById(context, id) {
-            axios
-                .get(context.state.participantsApiUrl + '/' + id)
-                .then(response => context.commit('setCurrentParticipant', response.data));
+        async fetchParticipantById({commit}, id) {
+            const participant = await participantService.getParticipantAsync(id)
+            commit('setCurrentParticipant', participant)
         }
     },
 
