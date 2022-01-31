@@ -11,7 +11,7 @@
         <div class="row">
           <div class="col">
             <h5>Date</h5>
-            <p class="details">{{tournament.date}}</p>
+            <p class="details">{{tournament.date.slice(0, 10)}}</p>
           </div>
           <div class="col">
             <h5>Prize</h5>

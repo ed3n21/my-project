@@ -1,25 +1,16 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-      <router-link class="navbar-brand" to="/">Tennis</router-link>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link" to="/tournaments">Tournaments</router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <div>
+  <b-navbar toggleable="lg" type="light" variant="light">
+    <b-navbar-brand href="#">Tennis</b-navbar-brand>
+
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <b-navbar-nav>
+        <b-nav-item href="#"><router-link class="nav-link" to="/tournaments">Tournaments</router-link></b-nav-item>
+      </b-navbar-nav>
+    </b-collapse>
+  </b-navbar>
+</div>
+
 </template>
