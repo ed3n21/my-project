@@ -6,25 +6,16 @@
 </template>
 
 <script>
-import TournamentList from './components/TournamentList.vue'
 import TheNavigation from './components/TheNavigation.vue'
+import ParticipantList from './components/ParticipantList.vue'
+import ParticipantDetails from './components/ParticipantDetails.vue'
 
 export default {
   name: 'App',
   components: {
-    TournamentList,
-    TheNavigation
-  },
-
-  mounted() {
-    let recaptchaScript = document.createElement('script')
-    recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js')
-    document.head.appendChild(recaptchaScript)
+    TheNavigation,
+    ParticipantList,
+    ParticipantDetails
   }
 }
 </script>
-
-<style>
-
-
-</style>

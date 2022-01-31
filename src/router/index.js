@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import TournamentList from '../components/TournamentList'
 
 Vue.use(Router)
 
@@ -10,13 +9,25 @@ export default new Router({
     {
       path: '/tournaments',
       name: 'TournamentList',
-      component: TournamentList,
+      component: () => import(/* webpackChunkName: "tournamentList" */ '../components/TournamentList'),
       props: true
     },
     {
       path: '/tournaments/:id',
       name: 'TournamentDetails',
-      component: () => import(/* webpackChunkName: "details" */ '../components/TournamentDetails'),
+      component: () => import(/* webpackChunkName: "tournamentDetails" */ '../components/TournamentDetails'),
+      props: true
+    },
+    {
+      path: '/participants',
+      name: 'ParticipantList',
+      component: () => import(/* webpackChunkName: "participantList" */ '../components/ParticipantList'),
+      props: true
+    },
+    {
+      path: '/participants/:id',
+      name: 'ParticipantDetails',
+      component: () => import(/* webpackChunkName: "participantDetails" */ '../components/ParticipantDetails'),
       props: true
     }
   ]

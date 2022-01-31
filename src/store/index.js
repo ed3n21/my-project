@@ -10,7 +10,9 @@ Vue.use(VueAxios, axios)
 export default new Vuex.Store({
     state: { // = data
         tournaments: [],
-        currentTournament: null
+        participants: [],
+        currentTournament: null,
+        currentParticipant: null
     },
 
     getters: { // = computed
@@ -28,6 +30,18 @@ export default new Vuex.Store({
             axios
                 .get('http://localhost:62542/api/tournaments/'+ id)
                 .then(response => context.commit('setCurrentTournament', response.data));
+        },
+
+        fetchParticipants(context) {
+            axios
+                .get('http://localhost:62542/api/participants')
+                .then(response => context.commit('setParticipants', response.data));
+        },
+
+        fetchParticipantById(context, id) {
+            axios
+                .get('http://localhost:62542/api/participants/'+ id)
+                .then(response => context.commit('setCurrentParticipant', response.data));
         }
     },
 
@@ -39,5 +53,13 @@ export default new Vuex.Store({
         setCurrentTournament(state, tournament) {
             state.currentTournament = tournament;
         },
+
+        setParticipants(state, participants) {
+            state.participants = participants;
+        },
+
+        setCurrentParticipant(state, participant) {
+            state.currentParticipant = participant;
+        }
     }
 })
