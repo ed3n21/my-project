@@ -27,15 +27,23 @@
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex'
+
 export default {
   computed: {
-    tournaments() {
-      return this.$store.state.tournaments;
-    },
+    ...mapState('tournaments', {
+      tournaments: (state) => state.tournaments
+    })
+  },
+
+  methods: {
+    ...mapActions('tournaments', {
+      fetchTournaments: 'fetchTournaments'
+    })
   },
 
   created() {
-    this.$store.dispatch("fetchTournaments");
+    this.fetchTournaments()
   },
 };
 </script>

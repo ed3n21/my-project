@@ -58,11 +58,13 @@
 </template>
 
 <script>
+import {mapState, mapActions} from 'vuex'
+
 export default {
   computed: {
-    participant() {
-        return this.$store.state.currentParticipant
-    }
+    ...mapState('participants', {
+      participant: (state) => state.currentParticipant
+    })
   },
 
   props: {
@@ -72,8 +74,14 @@ export default {
     },
   },
 
+  methods: {
+    ...mapActions('participants', {
+      fetchParticipantById: 'fetchParticipantById'
+    })
+  },
+
   created() {
-    this.$store.dispatch("fetchParticipantById", this.id);
+    this.fetchParticipantById(this.id)
   }
 };
 </script>

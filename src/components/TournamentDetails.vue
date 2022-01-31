@@ -67,11 +67,13 @@
 
 
 <script>
+import {mapState, mapActions} from 'vuex'
+
 export default {
   computed: {
-    tournament() {
-      return this.$store.state.currentTournament;
-    },
+    ...mapState ('tournaments', {
+      tournament: (state) => state.currentTournament
+    })
   },
 
   props: {
@@ -81,8 +83,14 @@ export default {
     },
   },
 
+  methods: {
+    ...mapActions('tournaments', {
+      fetchTournamentById: 'fetchTournamentById'
+    })
+  },
+
   created() {
-    this.$store.dispatch("fetchTournamentById", this.id);
+    this.fetchTournamentById(this.id)
   },
 };
 </script>
