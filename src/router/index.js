@@ -4,12 +4,6 @@ import Home from '../views/Home'
 
 Vue.use(Router)
 
-function dynmaicPropsFn(route) {
-    return {
-      id: Number(route.params.id),
-    };
-}
-
 export default new Router({
   mode: 'history',
   routes: [
@@ -25,10 +19,10 @@ export default new Router({
       props: true
     },
     {
-      path: '/tournaments/:id',
+      path: '/tournaments/:tournamentId',
       name: 'TournamentDetails',
       component: () => import(/* webpackChunkName: "tournamentDetails" */ '../views/TournamentDetails'),
-      props: dynmaicPropsFn
+      props: (route) => ({id: Number(route.params.tournamentId)})
     },
     {
       path: '/participants',
@@ -37,10 +31,10 @@ export default new Router({
       props: true
     },
     {
-      path: '/participants/:id',
+      path: '/participants/:participantId',
       name: 'ParticipantDetails',
       component: () => import(/* webpackChunkName: "participantDetails" */ '../views/ParticipantDetails'),
-      props: dynmaicPropsFn
+      props: (route) => ({id: Number(route.params.participantId)})
     }
   ]
 })
