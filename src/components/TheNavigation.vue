@@ -1,7 +1,7 @@
 <template>
   <div>
   <b-navbar toggleable="lg" type="light" variant="light">
-    <b-navbar-brand href="#">Tennis</b-navbar-brand>
+    <b-navbar-brand href="/"><router-link class="nav-link text-dark" to="/">Tennis</router-link></b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
