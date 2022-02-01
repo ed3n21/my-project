@@ -43,7 +43,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   computed: {
     ...mapState('participants', {
-      participants: (state) => state.participants,
+      participants: (state) => state.items,
     }),
   },
 

@@ -32,7 +32,7 @@ import {mapState, mapActions} from 'vuex'
 export default {
   computed: {
     ...mapState('tournaments', {
-      tournaments: (state) => state.tournaments
+      tournaments: (state) => state.items
     })
   },
 

@@ -5,7 +5,7 @@ export default {
     namespaced: true,
 
     state: {
-        tournaments: [],
+        items: [],
         currentTournament: null,
         tournamentsApiUrl: process.env.TOURNAMENTS_API
     },
@@ -24,7 +24,7 @@ export default {
 
     mutations: {
         setTournaments(state, tournaments) {
-            state.tournaments = tournaments;
+            state.items = tournaments;
         },
 
         setCurrentTournament(state, tournament) {

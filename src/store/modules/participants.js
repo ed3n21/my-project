@@ -4,7 +4,7 @@ export default {
     namespaced: true,
 
     state: {
-        participants: [],
+        items: [],
         currentParticipant: null,
         participantsApiUrl: process.env.PARTICIPANTS_API
     },
@@ -23,7 +23,7 @@ export default {
 
     mutations: {
         setParticipants(state, participants) {
-            state.participants = participants;
+            state.items = participants;
         },
 
         setCurrentParticipant(state, participant) {
