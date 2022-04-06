@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="container col-md-7 mb-5">
-        <p>{{ tournament.description }}</p>
+        <div v-html="tournament.description"></div>
       </div>
       <div class="container container col-md-7">
         <table class="table table-borderless">
