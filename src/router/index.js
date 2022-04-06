@@ -35,6 +35,11 @@ export default new Router({
       name: 'ParticipantDetails',
       component: () => import(/* webpackChunkName: "participantDetails" */ '../views/ParticipantDetails'),
       props: (route) => ({id: Number(route.params.participantId)})
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import(/* webpackChunkName: "login" */ '../views/Login'),
     }
   ]
 })
