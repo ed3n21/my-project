@@ -4,6 +4,7 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import tournaments from './modules/tournaments'
 import participants from './modules/participants'
+import authentication from './modules/authentication';
 
 
 Vue.use(Vuex)
@@ -12,7 +13,8 @@ Vue.use(VueAxios, axios)
 export default new Vuex.Store({
     modules: {
         tournaments,
-        participants
+        participants,
+        authentication
     },
 
     state: {

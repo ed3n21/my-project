@@ -17,11 +17,32 @@
             </b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav>
-          <b-nav-item>
+          <b-nav-item v-if="loggedIn">
+            <a class="nav-link" @click="logout">Logout</a>
+          </b-nav-item>
+          <b-nav-item v-else>
             <router-link class="nav-link" to="/login">Login</router-link>
-            </b-nav-item>
+          </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </div>
   </b-navbar>
 </template>
+
+
+<script>
+import { mapState, mapActions } from "vuex";
+
+export default {
+  computed: {
+    ...mapState("authentication", {
+      loggedIn: (state) => state.status.loggedIn,
+    }),
+  },
+  methods: {
+    ...mapActions("authentication", {
+      logout: "logout",
+    }),
+  }
+}
+</script>
